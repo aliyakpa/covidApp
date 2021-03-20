@@ -1,0 +1,51 @@
+body{
+  margin:3%;
+  background-color: #FFDAB3;
+  color:#39788F;
+}
+
+button{
+  font-size:1.5rem;
+}
+
+.flex-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+h6{
+  font-size: 1.5rem;
+}
+#homeC{
+  margin-top:10%
+
+}
+#questionHead{
+  text-align: center;
+}
+
+input{
+  width:500px;
+}
+#submitQuestion{
+  margin-left: 50%;
+  font-size: 1.5rem;
+}
+
+#important{
+  font-size:1.7rem;
+  font-style:italic ;
+}
+#idSubmit{
+  font-size: 1.5rem;
+
+}
+
+#questionForm{
+  font-size: 1.5rem;
+}
+
+
+

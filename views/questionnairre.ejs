@@ -1,0 +1,79 @@
+<%- include('header'); -%>
+ 
+<body>
+ 
+   <section class="flex-container">
+       <h1 class="display-4 mb-3" id="questionHead"> The following questions will help us finalize your eligibility
+       </h1>
+       <form id="questionForm" method="POST" action="/questionnairre">
+           <input type="hidden" id="custId" name="EMPLOYEE_ID" value=<%=employee.EMPLOYEE_ID %>>
+           <div class="row mb-3">
+               <div class="form-check">
+                   <input type="checkbox" name="VACCINATED" class="form-check-input" id="vaccinated" value="TRUE">
+                   <label class="form-check-label" for="vaccinated">Are you fully vaccinated?</label>
+               </div>
+           </div>
+           <div class="row mb-3">
+               <div class="form-check">
+                   <input type="checkbox" name="COVID_CONTACT" class="form-check-input" id="covidContact" value="TRUE">
+                   <label class="form-check-label" for="covidContact">Have you been in contact with anyone who has
+                       tested
+                       postive for COVID 19 in the
+                       last 14 days?</label>
+               </div>
+           </div>
+           <div class="row mb-3">
+               <div class="form-check">
+                   <input type="checkbox" name="TRAVEL_INTERNATIONAL" class="form-check-input" id="internationalTravel"
+                       value="TRUE">
+                   <label class="form-check-label" for="internationalTravel">Have you been outside of the country in
+                       the
+                       last
+                       14 days?</label>
+               </div>
+           </div>
+ 
+           <div class="row" id="important">
+               <p>Have you experienced any of the following symptoms...</p>
+           </div>
+           <div class=" form-check">
+               <input type="checkbox" name="FEVER" class="form-check-input" id="fever" value="TRUE">
+               <label class="form-check-label" for="fever">Fever (>100.2)</label>
+           </div>
+           <div class=" form-check">
+               <input type="checkbox" name="COUGH" class="form-check-input" id="cough" value="TRUE">
+               <label class="form-check-label" for="cough">Cough or shortness of breath</label>
+           </div>
+           <div class=" form-check">
+               <input type="checkbox" name="SORE_THROAT" class="form-check-input" id="soreT" value="TRUE">
+               <label class="form-check-label" for="soreT">Sore Throat</label>
+           </div>
+           <div class=" form-check">
+               <input type="checkbox" name="CHILLS" class="form-check-input" id="chills" value="TRUE">
+               <label class="form-check-label" for="chills">Chills</label>
+           </div>
+           <div class=" form-check">
+               <input type="checkbox" name="MUSCLE_ACHES" class="form-check-input" id="musAche" value="TRUE">
+               <label class="form-check-label" for="musAche">Muscle Aches</label>
+           </div>
+           <div class=" form-check">
+               <input type="checkbox" name="HEADACHE" class="form-check-input" id="head" value="TRUE">
+               <label class="form-check-label" for="head">Headache</label>
+           </div>
+           <div class=" form-check">
+               <input type="checkbox" name="TASTE_SMELL_LOSS" class="form-check-input" id="lossTS" value="TRUE">
+               <label class="form-check-label" for="lossTS">New loss of taste or smell</label>
+           </div>
+           <div class=" mb-3 form-check">
+               <input type="checkbox" name="ABDOMINAL_PAIN" class="form-check-input" id="abdomP" value="TRUE">
+               <label class="form-check-label" for="abdomP">Abdominal pain, nasuea, or diarrhea </label>
+           </div>
+ 
+ 
+           <button type="submit" id="submitQuestion" class="btn btn-primary submit">Submit</button>
+       </form>
+   </section>
+</body>
+</head>
+ 
+<%- include('footer'); -%>
