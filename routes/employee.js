@@ -21,8 +21,17 @@ router.get('/', function (req, res, next) {
           res.render('questionnairre', { "employee": employee });
           return;
         } else {
-          res.render('message', { "message": "Current Status: " + employee.EMPLOYEE_RETURN_STATUS, "hasError": false });
-          return;
+          if (employee.EMPLOYEE_RETURN_STATUS_CD === "OE") {
+            res.render('message', { "message": "You are able to come in to the office! Please bring a mask and we will see you soon. ", "hasError": false });
+            return;
+          } else if (employee.EMPLOYEE_RETURN_STATUS_CD === "CP") {
+            res.render('message', { "message": "You are unable to come to the office at this time. Please follow all CDC guidelines and take care of yourself. We hope to see you soon!", "hasError": false });
+            return;
+          } else if (employee.EMPLOYEE_RETURN_STATUS_CD === "NTR") {
+            res.render('message', { "message": "Please take and submit a COVID test, so we can determine your return status.", "hasError": false });
+            return;
+          }
+
         }
       })
       .catch(error => {
