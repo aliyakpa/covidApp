@@ -22,7 +22,7 @@ router.get('/', function (req, res, next) {
           return;
         } else {
           if (employee.EMPLOYEE_RETURN_STATUS_CD === "OE") {
-            res.render('message', { "message": "Yay! You are currently ABLE to come to the office! Please bring a mask and we will see you soon. ", "hasError": false });
+            res.render('message', { "message": "Yay! You are currently ABLE to come to the office. Please bring a mask and we will see you soon. ", "hasError": false });
             return;
           } else if (employee.EMPLOYEE_RETURN_STATUS_CD === "CP") {
             res.render('message', { "message": "You are currently UNABLE to come to the office. Please follow all CDC guidelines and take care of yourself. We hope to see you soon!", "hasError": false });
