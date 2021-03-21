@@ -67,9 +67,9 @@ function addQuestionnairre(questionnairre) {
     connection.execute({
       //sqlText: 'select * from WLN_CASE_COMP.GROUP1.VW_EMPLOYEE_RETURN_RESULTS;',
       sqlText: 'insert into WLN_CASE_COMP.GROUP1.STG_EMPLOYEE_QUESTIONNAIRE (EMPLOYEE_ID, RESULT_DATE, QUES_RESULTS, VACCINATED, COVID_CONTACT, TRAVEL_INTERNATIONAL, FEVER, COUGH, SORE_THROAT, CHILLS, MUSCLE_ACHES, HEADACHE, TASTE_SMELL_LOSS, ABDOMINAL_PAIN) VALUES (?, CURRENT_DATE(),?,?,?,?,?,?,?,?,?,?,?,?)',
-      binds: [questionnairre.EMPLOYEE_ID, questionnairre.QUES_RESULTS, questionnairre.VACCINATED, questionnairre.COVID_CONTACT, questionnairre.TRAVEL_INTERNATIONAL, 
-        questionnairre.FEVER, questionnairre.COUGH, questionnairre.SORE_THROAT, questionnairre.CHILLS, questionnairre.MUSCLE_ACHES, questionnairre.HEADACHE, 
-        questionnairre.TASTE_SMELL_LOSS, questionnairre.ABDOMINAL_PAIN],
+      binds: [questionnairre.EMPLOYEE_ID, questionnairre.QUES_RESULTS, questionnairre.VACCINATED, questionnairre.COVID_CONTACT, questionnairre.TRAVEL_INTERNATIONAL,
+      questionnairre.FEVER, questionnairre.COUGH, questionnairre.SORE_THROAT, questionnairre.CHILLS, questionnairre.MUSCLE_ACHES, questionnairre.HEADACHE,
+      questionnairre.TASTE_SMELL_LOSS, questionnairre.ABDOMINAL_PAIN],
       complete: function (err, stmt, rows) {
         if (err) {
           let errorMsg = 'Failed to execute statement due to the following error: ' + err.message;
@@ -84,6 +84,26 @@ function addQuestionnairre(questionnairre) {
   });
 }
 
+function deleteTodayQuestionnairre(employeeId) {
+  console.log("deleting today's questionnairre for employeeId: " + employeeId);
+  return new Promise((resolve, reject) => {
+    connection.execute({
+      //sqlText: 'select * from WLN_CASE_COMP.GROUP1.VW_EMPLOYEE_RETURN_RESULTS;',
+      sqlText: 'delete from WLN_CASE_COMP.GROUP1.STG_EMPLOYEE_QUESTIONNAIRE where EMPLOYEE_ID = ? and RESULT_DATE = CURRENT_DATE()',
+      binds: [employeeId],
+      complete: function (err, stmt, rows) {
+        if (err) {
+          let errorMsg = 'Failed to execute statement due to the following error: ' + err.message;
+          console.error(errorMsg);
+          reject(errorMsg);
+        } else {
+          console.log('Successfully executed statement: ' + stmt.getSqlText());
+          resolve(null);
+        }
+      }
+    });
+  });
+}
 function initialize() {
   connect();
 }
@@ -92,6 +112,6 @@ function initialize() {
 //initialize();
 
 module.exports = {
-  initialize, getEmployee, addQuestionnairre
+  initialize, getEmployee, addQuestionnairre, deleteTodayQuestionnairre
 
 }
