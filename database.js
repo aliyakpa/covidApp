@@ -2,14 +2,17 @@
 var snowflake = require('snowflake-sdk');
 var connectionId = null;
 
+process.env.DB_ACCOUNT = 'slalom';
+process.env.DB_USER_ID = 'WLN_G1';
+process.env.DB_PASSWORD = 'Welcome1234';
 
 var connection = snowflake.createConnection({
   account: process.env.DB_ACCOUNT,
   username: process.env.DB_USER_ID,
   password: process.env.DB_PASSWORD,
   warehouse: "NEW_YORK_CITY_ANALYZE_WH",
-  //database: "WLN_CASE_COMP",
-  //schema: "GROUP1"
+  database: "WLN_CASE_COMP",
+  schema: "GROUP1"
 }
 );
 

@@ -12,14 +12,14 @@ button{
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
 }
 
 h6{
   font-size: 1.5rem;
 }
 #homeC{
-  margin-top:10%
+  margin-top:5%
 
 }
 #questionHead{
@@ -51,4 +51,18 @@ input{
   font-size: 1.5rem;
 }
 
+img{
+  margin-left: 40%;
+}
 
+.footer{
+  position:fixed;
+  font-size: 1.1rem;
+  color:#FFDAB3;
+  background-color: #39788F;
+  text-align:center;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  height: 5%;
+}
